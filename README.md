@@ -2,13 +2,13 @@
 
 ## 📋 Description
 
-Ce projet vise à développer et comparer des modèles d'optimisation pour répliquer les performances de portefeuilles thématiques via des portefeuilles sectoriels. L'objectif est de minimiser l'erreur de tracking (RMSE) entre le portefeuille thématique cible et le portefeuille répliqué, tout en respectant des contraintes de portefeuille (poids positifs, somme égale à 1).
+Ce projet vise à développer et comparer des modèles d'optimisation pour répliquer les performances de portefeuilles thématiques via des portefeuilles sectoriels. 
 
 Le projet implémente et évalue cinq modèles d'optimisation différents :
 - **Régression linéaire contrainte** (simple et avec walk-forward)
 - **Régression Ridge** avec régularisation L2
 - **Mean-Variance Tracking** basé sur l'optimisation de la variance
-- **Algorithme génétique** pour l'optimisation stochastique
+- **Algorithme génétique** Pour une méthode d'optimisation stochastique 
 
 ## 🚀 Installation
 
@@ -32,7 +32,7 @@ Les principales dépendances incluent :
 ## 📁 Structure du projet
 
 Portfolio-replication/
-├── data/                          # Données du projet
+├── data/                         
 │   └── raw/                       # Données brutes (CSV)
 │       ├── msci_acwi_imi_thematics_daily_returns_202007_202508.csv
 │       ├── msci_acwi_imi_sectors_daily_returns_202007_202508.csv
@@ -41,9 +41,9 @@ Portfolio-replication/
 ├── src/                           # Code source modulaire
 │   ├── __init__.py                # Package principal
 │   ├── data_processing.py         # Chargement et transformation des données
-│   ├── evaluation.py              # Métriques d'évaluation (RMSE, stabilité)
-│   └── models/                    # Modèles d'optimisation
-│       ├── __init__.py            # Exports des fonctions d'optimisation
+│   ├── evaluation.py              # Métriques d'évaluation (RMSE, stabilité, turnover)
+│   └── **models**/                # Stocke les fonctions de réplications utilisés pour implémenter les différents modèles
+│       ├── __init__.py            # Exports des fonctions de réplications
 │       └── optimization.py        # Implémentation des 5 modèles
 │
 ├── results/                       # Résultats et outputs
@@ -57,17 +57,17 @@ Portfolio-replication/
 ├── docs/                          # Documentation
 │   └── Sujet_Technique_Stage_Quant.pdf  # Document technique de référence
 │
-├── evaluate_all_ptf.py            # Script principal d'évaluation
+├── evaluate_all_ptf.py            # Script principal d'évaluation permettant de récupérer pour chaque portefeuille thématique, les portefeuilles reproduits, et les stocker dans results/tables
 │
 ├── Notebooks d'analyse :
-│   ├── Model_selection.ipynb      # Sélection et comparaison des modèles
-│   ├── Statistics_all_portfolios.ipynb  # Statistiques descriptives sur tous les portefeuilles
-│   ├── Statistics_Specific_portfolio.ipynb  # Analyse détaillée d'un portefeuille spécifique
-│   ├── Statistiques_descriptives.ipynb  # Statistiques descriptives générales
-│   └── UNACHIVED_ML_model.ipynb   # Modèles ML non archivés (work in progress)
+│   ├── Model_selection.ipynb      # Fichier python Markdown permettant d'expliquer les modèles utilisés et leurs choix. 
+│   ├── Statistics_all_portfolios.ipynb  # Statistiques sur les méthodes répliquant l'ensemble des portefeuilles
+│   ├── Statistics_Specific_portfolio.ipynb  # Analyse détaillée des méthodes pour un portefeuille spécifique
+│   ├── Statistiques_descriptives.ipynb  # Statistiques descriptives générales sur les données fournies. 
+│   └── UNACHIVED_ML_model.ipynb   # Propositions de Modèles ML non aboutis.
 │
 ├── requirements.txt               # Dépendances Python
-└── README.md                      # Ce fichierrmances
+└── README.md                     
 
 ### `Statistics_all_portfolios.ipynb`
 Analyse comparative de tous les portefeuilles thématiques :
@@ -122,13 +122,13 @@ python evaluate_all_ptf.py
 ### Fichiers générés
 
 **`results/tables/evaluation_all_models_all_portfolios.csv`**
-Tableau complet avec pour chaque portefeuille et chaque modèle :
+Dataframe complete avec pour chaque portefeuille et chaque modèle :
 - RMSE out-of-sample
 - Métriques de stabilité (MAD, Turnover, Volatilité des poids)
 - Paramètres spécifiques (ex: alpha Ridge)
 
 **`results/tables/statistiques_descriptives_rmse_stabilite.csv`**
-Statistiques descriptives agrégées :
+Statistiques descriptives agrégées à partir de evaluation_all_models_all_portfolios.csv:
 - Moyennes, médianes, min, max, écart-type
 - Quartiles (Q1, Q3)
 - Nombre d'observations valides
@@ -196,12 +196,4 @@ Méthode métaheuristique stochastique explorant l'espace des solutions via sél
 - Les portefeuilles thématiques avec historiques incomplets ont été exclus (6 sur 40)
 - Les données couvrent la période de juillet 2020 à août 2025
 - Les rendements sont transformés en mensuels composés pour l'analyse
-
-## 🤝 Contribution
-
-Ce projet a été développé dans le cadre d'un stage quantitatif.
-
-## 📄 Licence
-
-[À compléter selon vos besoins]
 
