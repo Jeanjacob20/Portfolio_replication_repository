@@ -69,6 +69,7 @@ Portfolio-replication/
 │
 ├── requirements.txt                # Dépendances Python
 └── README.md                                     
+```
 
 ### `Statistics_all_portfolios.ipynb`
 Analyse comparative de tous les portefeuilles thématiques :
