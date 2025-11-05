@@ -1,0 +1,23 @@
+# Dépendances pour Portfolio Replication
+
+# Core
+pandas>=1.5.0
+numpy>=1.24.0
+
+# Optimisation
+cvxpy>=1.3.0
+scipy>=1.10.0
+
+# Machine Learning (pour 2nd_model)
+scikit-learn>=1.3.0
+
+# Visualisation
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Algorithme génétique (pour 1st_model)
+deap>=1.3.0
+
+# Utilitaires
+jupyter>=1.0.0
+ipykernel>=6.0.0
